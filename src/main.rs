@@ -22,7 +22,7 @@ fn main() -> Result<()> {
         .into_iter()
         .unzip();
 
-    match Rofi::new(&names).run_index() {
+    match Rofi::new(&names).lines(15).run_index() {
         Ok(index) => terminal(&paths[index]),
         Err(rofi::Error::Interrupted) => println!("Interrupted"),
         Err(e) => println!("Error: {}", e),
